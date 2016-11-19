@@ -1,5 +1,6 @@
 require 'bundler'
 require 'json'
+require 'dotenv'
 Bundler.require
 Loader.autoload
 
