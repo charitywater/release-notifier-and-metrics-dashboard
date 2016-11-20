@@ -7,10 +7,11 @@ Dotenv.load
 
 class App < Rack::App
 
+  apply_extension :logger
+
   mount GithubPullRequest
 
-  headers 'Access-Control-Allow-Origin' => '*',
-          'Access-Control-Expose-Headers' => 'X-My-Custom-Header, X-Another-Custom-Header'
+  headers 'Access-Control-Allow-Origin' => '*'
 
   serializer do |object|
     object.to_s
@@ -24,7 +25,7 @@ class App < Rack::App
   post '/ci-post-deploy' do
     webhook_json = JSON.parse(request.env["rack.input"].read)
     @pr_number = webhook_json['commit']['message'].match(/request #(\d+) /)[1]
-    logger.info "ci post-deploy webhook received for maji PR #{pr_number}"
+    logger.info "ci post-deploy webhook received for PR #{pr_number}"
   end
 
   get '/testing-gh-api/:pr_number' do
