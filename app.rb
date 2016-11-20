@@ -23,7 +23,7 @@ class App < Rack::App
   end
 
   post '/ci-post-deploy' do
-    webhook_json = JSON.parse(request.env["rack.input"].read)
+    webhook_json = JSON.parse(payload)
     @pr_number = webhook_json['commit']['message'].match(/request #(\d+) /)[1]
     logger.info "ci post-deploy webhook received for PR #{pr_number}"
   end
