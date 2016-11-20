@@ -10,6 +10,7 @@ class App < Rack::App
   apply_extension :logger
 
   mount GithubPullRequest
+  mount PivotalTrackerStory
 
   headers 'Access-Control-Allow-Origin' => '*'
 
@@ -26,6 +27,8 @@ class App < Rack::App
     webhook_json = JSON.parse(payload)
     @pr_number = webhook_json['commit']['message'].match(/request #(\d+) /)[1]
     logger.info "ci post-deploy webhook received for PR #{pr_number}"
+    pr = GithubPullRequest.new pr_number
+    pt_story = PivotalTrackerStory.new pr.pt_story_number
   end
 
   get '/testing-gh-api/:pr_number' do
@@ -38,4 +41,8 @@ class App < Rack::App
   end
 
   root '/hello'
+
+  private
+
+  attr_reader :pr_number
 end
