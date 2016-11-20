@@ -4,6 +4,7 @@ gem 'rack'
 gem 'rack-app', require: 'rack/app'
 gem 'loader'
 gem 'httparty'
+gem 'screencap'
 
 group :development, :test do
   gem 'rspec'
