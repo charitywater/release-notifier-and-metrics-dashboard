@@ -6,11 +6,11 @@ class GithubPullRequest < Rack::App
   end
 
   def pt_story_number
-    response_body.match(%r{pivotaltracker.com\/story\/show\/(\d+)\z})[0]
+    response_body['body'].match(%r{pivotaltracker.com\/story\/show\/(\d+)})[1]
   end
 
-  def retrieve_details
-    query_github_api "repos/#{ENV['GITHUB_REPO']}/pulls/#{pr_number}"
+  def title
+    response_body['title']
   end
 
   private
@@ -18,7 +18,11 @@ class GithubPullRequest < Rack::App
   attr_reader :pr_number
 
   def response_body
-    JSON.parse(retrieve_details)
+    @response_body ||= JSON.parse(retrieve_details.body)
+  end
+
+  def retrieve_details
+    query_github_api "repos/#{ENV['GITHUB_REPO']}/pulls/#{pr_number}"
   end
 
   def query_github_api endpoint
