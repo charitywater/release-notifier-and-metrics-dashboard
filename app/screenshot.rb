@@ -8,7 +8,7 @@ class Screenshot < Rack::App
   def screenshot_image
     fetcher = Screencap::Fetcher.new(url)
     fetcher.fetch(
-      :output => '/tmp/test.png',
+      :output => "tmp/#{remove_protocol_and_dasherize(url)}.png",
       width: 1024,
       height: 5000
     )
@@ -17,4 +17,8 @@ class Screenshot < Rack::App
   private
 
   attr_reader :url
+
+  def remove_protocol_and_dasherize(url)
+    url.gsub(/http.*:\/\//, '').gsub(/\/|\.|:/, '-')
+  end
 end

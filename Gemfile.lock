@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Eventshare/screencap.git
+  revision: 0478476c539d753644599f4f679ba0ab546f2f99
+  specs:
+    screencap (0.2.1)
+      phantomjs
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,8 +51,6 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    screencap (0.1.4)
-      phantomjs
     simple_oauth (0.3.1)
     slop (3.6.0)
     thread_safe (0.3.5)
@@ -71,7 +76,7 @@ DEPENDENCIES
   rack
   rack-app
   rspec
-  screencap
+  screencap!
   tumblr_client
   tzinfo
 

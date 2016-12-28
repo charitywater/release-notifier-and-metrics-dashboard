@@ -4,7 +4,7 @@ gem 'rack'
 gem 'rack-app', require: 'rack/app'
 gem 'loader'
 gem 'httparty'
-gem 'screencap'
+gem 'screencap', github: 'Eventshare/screencap'
 gem 'tumblr_client'
 gem 'tzinfo'
 
