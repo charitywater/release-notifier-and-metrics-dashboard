@@ -5,6 +5,7 @@ gem 'rack-app', require: 'rack/app'
 gem 'loader'
 gem 'httparty'
 gem 'screencap'
+gem 'tumblr_client'
 
 group :development, :test do
   gem 'rspec'
