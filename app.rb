@@ -1,9 +1,13 @@
-require 'bundler'
 require 'json'
-require 'dotenv'
+require 'bundler'
 Bundler.require
+
+if ENV['RACK_ENV'] == 'development'
+  require 'dotenv'
+  Dotenv.load
+end
+
 Loader.autoload
-Dotenv.load
 
 class App < Rack::App
 
