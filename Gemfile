@@ -6,6 +6,7 @@ gem 'loader'
 gem 'httparty'
 gem 'screencap'
 gem 'tumblr_client'
+gem 'tzinfo'
 
 group :development, :test do
   gem 'rspec'
