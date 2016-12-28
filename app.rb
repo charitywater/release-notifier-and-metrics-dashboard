@@ -33,6 +33,8 @@ class App < Rack::App
     logger.info "ci post-deploy webhook received for PR #{pr_number}"
     pr = GithubPullRequest.new pr_number
     pt_story = PivotalTrackerStory.new pr.pt_story_number
+    tumblr_post = TumblrPost.new pt_story, pr, webhook_json['finished_at']
+    tumblr_post.post
   end
 
   get '/testing-gh-api/:pr_number' do
