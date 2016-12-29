@@ -7,7 +7,7 @@ class TumblrPost < Rack::App
   end
 
   def post
-    client.photo("charity-water-site-updates.tumblr.com", { data: screenshots, caption: "<h3>This change was deployed on #{deploy_time}.</h3><p>#{pt_story.description}</p>" })
+    client.photo("charity-water-site-updates.tumblr.com", { data: screenshots, caption: "<h2>#{pr.title}</h2><h3>This change was deployed on #{deploy_time}.<br>PT ##{pt_story.id}</h3>" })
   end
 
   private

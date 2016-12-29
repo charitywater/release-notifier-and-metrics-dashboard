@@ -5,6 +5,10 @@ class PivotalTrackerStory < Rack::App
     @pt_story_number = pt_story_number
   end
 
+  def id
+    response_body['id']
+  end
+
   def labels
     response_body['labels']
   end
