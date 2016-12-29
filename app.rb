@@ -40,9 +40,5 @@ class App < Rack::App
     github.retrieve_details.body.to_s
   end
 
-  error StandardError, NoMethodError do |err|
-    { error: err.message }
-  end
-
   root '/hello'
 end
