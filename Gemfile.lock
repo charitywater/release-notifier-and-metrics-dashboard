@@ -19,6 +19,7 @@ GEM
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     json (2.0.2)
+    kgio (2.11.0)
     loader (3.1.0)
     method_source (0.8.2)
     mime-types (3.1)
@@ -38,6 +39,7 @@ GEM
     rack (2.0.1)
     rack-app (5.6.0)
       rack
+    raindrops (0.17.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -63,6 +65,9 @@ GEM
       simple_oauth
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unicorn (5.2.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -79,6 +84,7 @@ DEPENDENCIES
   screencap!
   tumblr_client
   tzinfo
+  unicorn
 
 BUNDLED WITH
    1.13.6

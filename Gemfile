@@ -8,6 +8,10 @@ gem 'screencap', github: 'Eventshare/screencap'
 gem 'tumblr_client'
 gem 'tzinfo'
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development, :test do
   gem 'rspec'
   gem 'pry'
