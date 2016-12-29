@@ -7,8 +7,9 @@ class Screenshot < Rack::App
 
   def screenshot_image
     fetcher = Screencap::Fetcher.new(url)
+    puts "creating screenshot for #{url}"
     fetcher.fetch(
-      :output => "tmp/#{remove_protocol_and_dasherize(url)}.png",
+      output: "tmp/#{remove_protocol_and_dasherize(url)}.png",
       width: 1024,
       height: 5000
     )
