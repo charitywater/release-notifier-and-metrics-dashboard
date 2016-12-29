@@ -32,8 +32,8 @@ class PivotalTrackerStory < Rack::App
   def query_pt_api endpoint
     HTTParty.get(
       pt_base_uri + endpoint,
-      :headers => {
-        'X-TrackerToken': ENV['PT_API_TOKEN']
+      headers: {
+        'X-TrackerToken' => ENV['PT_API_TOKEN']
       }
     ).body
   end

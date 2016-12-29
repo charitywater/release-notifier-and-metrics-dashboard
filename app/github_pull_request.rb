@@ -28,9 +28,9 @@ class GithubPullRequest < Rack::App
   def query_github_api endpoint
     HTTParty.get(
       github_base_uri + endpoint,
-      :headers => {
-        'Authorization': "token #{ENV['GITHUB_API_TOKEN']}",
-        'User-Agent': 'flats/release-notifier'
+      headers: {
+        'Authorization' => "token #{ENV['GITHUB_API_TOKEN']}",
+        'User-Agent' => 'flats/release-notifier'
       }
     )
   end
