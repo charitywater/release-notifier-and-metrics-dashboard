@@ -5,6 +5,7 @@ Bundler.require
 if ENV['RACK_ENV'] == 'development'
   require 'dotenv'
   Dotenv.load
+  require 'pry'
 end
 
 Loader.autoload
@@ -12,9 +13,6 @@ Loader.autoload
 class App < Rack::App
 
   apply_extension :logger
-
-  mount GithubPullRequest
-  mount PivotalTrackerStory
 
   headers 'Access-Control-Allow-Origin' => '*'
 
@@ -29,7 +27,7 @@ class App < Rack::App
 
   post '/ci-post-deploy' do
     webhook_json = JSON.parse(payload)
-    @pr_number = webhook_json['commit']['message'].match(/request #(\d+) /)[1]
+    pr_number = webhook_json['commit']['message'].match(/request #(\d+) /)[1]
     logger.info "ci post-deploy webhook received for PR #{pr_number}"
     pr = GithubPullRequest.new pr_number
     pt_story = PivotalTrackerStory.new pr.pt_story_number
@@ -47,8 +45,4 @@ class App < Rack::App
   end
 
   root '/hello'
-
-  private
-
-  attr_reader :pr_number
 end
